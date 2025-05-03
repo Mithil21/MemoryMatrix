@@ -7,8 +7,8 @@ Simple enough,
 3. The magic is it can provide you the extact code from the past applications which are tried and tested so you dont have to keep on writing the same code over and over again.
 
 Major Files Used: -
-Main.py ==> This is the main file for the backend to work
-app.py ==> This is the main file for the UI to work
+1. Main.py ==> This is the main file for the backend to work
+2. app.py ==> This is the main file for the UI to work
 
 NOTE: - We use streamlit and flask as our primary for frontend and backend respectively.
 crawler.py ==> used to fetching code from the repo
