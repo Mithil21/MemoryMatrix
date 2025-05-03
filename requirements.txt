@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+transformers==4.36.0
+torch
+faiss-cpu
+sentence-transformers
+python-multipart
+pydantic
+langchain
+streamlit
+flask
+hf_xet
+protobuf==3.20.*
