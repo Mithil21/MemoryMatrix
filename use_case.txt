@@ -1,1 +1,89 @@
-Create a spring boot authentication system in a pet store application
+Use Case: Azure-Secured Pet Store Management Application
+
+Application Name: "Paws & Claws Hub"
+
+Goal: To build a secure and user-friendly web application that allows pet store staff to manage their inventory of animals, track customer information, process sales, and generate reports. The application will leverage Azure AD for secure authentication of employees.
+
+Actors:
+
+Administrator: Has full access to all features, including user management, inventory management, sales processing, reporting, and configuration.
+Staff Member: Can manage inventory (add, update, remove pets), process sales, view customer information, and generate basic sales reports. Their access to certain administrative functions will be restricted.   
+Customer (Indirect): While not directly interacting with this management application, their information is stored and managed within it.
+Key Features:
+
+Secure Authentication via Azure AD:
+
+Employees (Administrators and Staff Members) will authenticate using their existing Azure AD accounts.
+The Spring Boot backend will integrate with Azure AD to verify user identities and roles.   
+The Angular frontend will use the Microsoft Authentication Library (MSAL) to handle the authentication flow, redirecting users to the Azure AD login page and securely obtaining access tokens.
+Role-based access control (RBAC) will be implemented, with different permissions granted to Administrators and Staff Members based on their Azure AD group memberships or assigned roles within the application.
+Pet Inventory Management:
+
+Staff can view a list of all pets in the store, including details like name, species, breed, age, gender, availability status, purchase price, and selling price.
+Authorized users can add new pet listings, including uploading images.
+Authorized users can update existing pet information.
+Authorized users can mark pets as sold or remove them from the inventory.
+The system should track the quantity of each pet type.
+Customer Management:
+
+Staff can view a list of customers, including their contact information and purchase history.
+Staff can add new customer records.
+Staff can update existing customer information.
+The system should allow associating pets with their owners after a sale.
+Sales Processing:
+
+Staff can initiate a new sale, select pets being purchased, and associate them with a customer (optional).
+The system should automatically calculate the total price, including potential discounts.
+Staff can record payment information.
+The system should update the inventory status of sold pets.
+The system should generate receipts for customers.
+Reporting:
+
+Administrators and Staff Members (with appropriate permissions) can generate reports such as:
+Current inventory levels.
+Sales reports (daily, weekly, monthly).
+List of sold pets.
+Customer purchase history.
+Low stock alerts.
+User Role Management (Administrator Only):
+
+Administrators can manage user accounts within the application (though authentication remains with Azure AD).
+Administrators can assign roles or map Azure AD groups to specific application permissions.
+Technical Implementation:
+
+Frontend:
+
+Angular framework for building the user interface.
+MSAL library for handling Azure AD authentication.   
+Communication with the backend via RESTful APIs.
+User interface components for displaying data, forms for data entry, and navigation.
+Backend:
+
+Spring Boot framework for building the API and business logic.
+Spring Security with Azure AD integration for securing the API endpoints and implementing RBAC.
+A database (e.g., PostgreSQL, MySQL, Azure SQL Database) to store application data (pets, customers, sales, etc.).
+RESTful API endpoints for frontend communication (e.g., /api/pets, /api/customers, /api/sales).
+Azure Services:
+
+Azure Active Directory (Azure AD): For user authentication and authorization.
+(Optional) Azure App Service for hosting the Spring Boot backend and Angular frontend.
+(Optional) Azure SQL Database or other Azure database services for data storage.
+(Optional) Azure Blob Storage for storing pet images.
+Workflow Example (Adding a New Pet):
+
+A Staff Member opens the "Pet Inventory" section in the Angular application.
+The Angular application makes a request to the Spring Boot backend (protected by Azure AD) to fetch the current inventory. The backend verifies the Staff Member's Azure AD token and their assigned roles/permissions.
+The Staff Member clicks the "Add New Pet" button.
+An Angular form is displayed, allowing the Staff Member to enter details about the new pet (name, species, breed, age, price, etc.) and upload an image.
+Upon submission, the Angular application sends the pet data (and image, potentially to Azure Blob Storage first with a link sent to the backend) to a specific Spring Boot API endpoint (e.g., /api/pets).
+The Spring Boot backend again verifies the Staff Member's authentication and authorization to add pets.
+The backend processes the data, stores it in the database, and potentially stores the image URL.
+The backend sends a success response back to the Angular application.
+The Angular application updates the pet inventory view to include the newly added pet.
+Benefits of this Architecture:
+
+Enhanced Security: Leverages the robust security features of Azure AD for authentication and authorization.
+Centralized User Management: Simplifies user management by integrating with the organization's existing Azure AD.
+Scalability and Reliability: Spring Boot and Angular are well-established frameworks known for their scalability and maintainability. Azure services provide a highly reliable infrastructure.   
+Clear Separation of Concerns: The layered architecture (Angular frontend, Spring Boot backend, database) promotes maintainability and independent development.
+Improved User Experience: Angular allows for a dynamic and responsive user interface.

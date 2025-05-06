@@ -1,6 +1,7 @@
 fastapi
+cargo
 uvicorn
-transformers==4.36.0
+transformers
 torch
 faiss-cpu
 sentence-transformers
@@ -11,3 +12,9 @@ streamlit
 flask
 hf_xet
 protobuf==3.20.*
+pandas
+numpy
+tqdm
+GitPython
+python-git
+flask-cors
