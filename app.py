@@ -47,7 +47,7 @@ import streamlit as st
 import requests
 
 st.set_page_config(page_title="Code Retriever", layout="wide")
-st.title("🧠 RAG Code Search & Generator")
+st.title("🧠 Memory Matrix: A RAG-Based Approach to Boost Developer Productivity")
 st.markdown("Upload a file to find relevant code snippets and their explanations.")
 
 # Initialize session state for storing results
